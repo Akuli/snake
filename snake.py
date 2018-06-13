@@ -48,11 +48,11 @@ class SnakeGame(tk.Frame):
 
     # FIXME: this gets stuck forever if there's no free space
     def make_food(self):
-        # why doesn't python have do-while :(
-        food = (random.randrange(self.width), random.randrange(self.height))
-        while food in self.snake_body:
+        while True:
             food = (random.randrange(self.width),
                     random.randrange(self.height))
+            if food not in self.snake_body:
+                break
         return food
 
     def on_key(self, event):
